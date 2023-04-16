@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const dbCount = api.example.getCount.useQuery();
 
   return (
     <>
@@ -45,6 +46,9 @@ const Home: NextPage = () => {
           </div>
           <p className="text-2xl text-white">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+          </p>
+          <p className="text-2xl text-white">
+            {dbCount.data ? dbCount.data.toString() : "Loading dbCount"}
           </p>
         </div>
       </main>
