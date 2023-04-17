@@ -21,7 +21,7 @@ const Home: NextPage = () => {
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
           </h1>
           <div className="flex flex-col gap-4 sm:grid-cols-2 md:gap-8 text-white">
-            {data ? data?.map((person) => (<div key={person.id}>{person.name} - {person.age} years old</div>)): "Loading people"}
+            {data ? data?.map((person) => (<div className="border-2 border-white p-4 rounded-full hover:bg-white hover:text-black transition-colors duration" key={person.id}>{person.name} - {person.age} years old</div>)): "Loading people"}
           </div>
         </div>
       </main>
