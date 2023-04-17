@@ -8,5 +8,13 @@ export const personRouter = createTRPCRouter({
   }),
   getCount: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.person.count();
+  }),
+  getThings: publicProcedure
+  .input(z.object({ id: z.string() }))
+  .query(({ ctx, input }) => {
+    return ctx.prisma.thing.findMany({
+      where: {
+        personId: input.id,
+       }});
   })
 });

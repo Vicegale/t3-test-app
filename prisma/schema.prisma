@@ -23,4 +23,13 @@ model Person {
     age Int
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now())
+    things Thing[]
+}
+
+model Thing {
+    id Int @id @default(autoincrement())
+    name String
+
+    person Person @relation(fields: [personId], references: [id])
+    personId String
 }

@@ -1,12 +1,19 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+
 
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { data } = api.person.getAll.useQuery();
+
+  const [selectedId, setSelectedId] = useState("");
+
+  const things = api.person.getThings.useQuery({ id: selectedId });
+
 
   return (
     <>
@@ -20,9 +27,15 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
           </h1>
-          <div className="flex flex-col gap-4 sm:grid-cols-2 md:gap-8 text-white">
-            {data ? data?.map((person) => (<div className="border-2 border-white p-4 rounded-full hover:bg-white hover:text-black transition-colors duration" key={person.id}>{person.name} - {person.age} years old</div>)): "Loading people"}
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col gap-4 sm:grid-cols-2 md:gap-8 text-white">
+              {data ? data?.map((person) => (<div className="border-2 border-white p-4 rounded-full hover:bg-white hover:text-black transition-colors duration" key={person.id} onClick={() => setSelectedId(person.id)}>{person.name} - {person.age} years old</div>)): "Loading people"}
+            </div>
+            <div className="text-white">
+              {things ? things?.data?.map((thing) => (<div className="border-2 border-white p-4 rounded-full hover:bg-white hover:text-black transition-colors duration" key={thing.id}>{thing.name}</div>)): "Loading things"}
+            </div>
           </div>
+          
         </div>
       </main>
     </>
