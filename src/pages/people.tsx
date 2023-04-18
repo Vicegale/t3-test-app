@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import autoAnimate from '@formkit/auto-animate'
-
+import Scatter from '~/components/ui/scatter'
 
 import { api } from "~/utils/api";
 
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
               {things ? things?.data?.map((thing) => (<div className="border-2 border-white p-4 rounded-full hover:bg-white hover:text-black transition-colors duration" key={thing.id}>{thing.name}</div>)): "Loading things"}
             </div>
           </div>
-          
+        <Scatter />
         </div>
       </main>
     </>
