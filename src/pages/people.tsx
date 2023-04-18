@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import autoAnimate from '@formkit/auto-animate'
 import Scatter from '~/components/ui/scatter'
@@ -8,7 +7,6 @@ import Scatter from '~/components/ui/scatter'
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { data } = api.person.getAll.useQuery();
   
   const [selectedId, setSelectedId] = useState("");

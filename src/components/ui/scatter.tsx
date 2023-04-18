@@ -17,7 +17,7 @@ const Scatter: NextPage = () => {
     do {
         newIdx = (Math.floor(Math.random() * board.length));
     } while(newIdx == idx)
-    let temp: string = board[newIdx]!;
+    const temp: string = board[newIdx]!;
     const newBoard = [...board]
     newBoard[newIdx] = newBoard[idx]!;
 
