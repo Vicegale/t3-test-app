@@ -53,6 +53,17 @@ const Home: NextPage = () => {
                 Go to the /people page
               </div>
             </Link>
+            <Link
+              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+              href="/thingies"
+              target="_blank"
+            >
+              <h3 className="text-2xl font-bold">Thingies →</h3>
+              <div className="text-lg">
+                Go to the /thingies page
+              </div>
+            </Link>
+
           </div>
           <p className="text-2xl text-white">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
