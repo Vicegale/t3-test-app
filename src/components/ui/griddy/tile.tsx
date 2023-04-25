@@ -14,7 +14,7 @@ const Tile: NextPage = () => {
     function resolveClassName() {
         switch(options[colorIdx]) {
             case "white":
-                return styles.white!.toString();
+                return ""; // styles.white!.toString();
             case "red":
                 return styles.red!.toString();
             case "green":
